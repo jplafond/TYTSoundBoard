@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E886BA0D1F3A7DC6004B25AB /* TYTSoundBoardData.json in Resources */ = {isa = PBXBuildFile; fileRef = E886BA0C1F3A7DC6004B25AB /* TYTSoundBoardData.json */; };
+		E886BA0F1F3A7E3A004B25AB /* Animals R Inno~.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E886BA0E1F3A7E3A004B25AB /* Animals R Inno~.mp3 */; };
+		E886BA121F3A7F35004B25AB /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E886BA111F3A7F35004B25AB /* Sound.swift */; };
+		E886BA151F3A843E004B25AB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E886BA141F3A843E004B25AB /* Constants.swift */; };
+		E886BA181F3A98AC004B25AB /* SoundsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E886BA171F3A98AC004B25AB /* SoundsTableViewController.swift */; };
 		E8F1C14B1F368BC000FA9ED7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1C14A1F368BC000FA9ED7 /* AppDelegate.swift */; };
 		E8F1C1521F368BC000FA9ED7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8F1C1501F368BC000FA9ED7 /* Main.storyboard */; };
 		E8F1C1541F368BC000FA9ED7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8F1C1531F368BC000FA9ED7 /* Assets.xcassets */; };
@@ -33,12 +38,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E886BA0C1F3A7DC6004B25AB /* TYTSoundBoardData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TYTSoundBoardData.json; sourceTree = "<group>"; };
+		E886BA0E1F3A7E3A004B25AB /* Animals R Inno~.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Animals R Inno~.mp3"; sourceTree = "<group>"; };
+		E886BA111F3A7F35004B25AB /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		E886BA141F3A843E004B25AB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E886BA171F3A98AC004B25AB /* SoundsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundsTableViewController.swift; sourceTree = "<group>"; };
 		E8F1C1471F368BC000FA9ED7 /* TYTSoundboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYTSoundboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F1C14A1F368BC000FA9ED7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8F1C1511F368BC000FA9ED7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E8F1C1531F368BC000FA9ED7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E8F1C1531F368BC000FA9ED7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		E8F1C1561F368BC000FA9ED7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E8F1C1581F368BC000FA9ED7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8F1C1581F368BC000FA9ED7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		E8F1C15D1F368BC100FA9ED7 /* TYTSoundboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TYTSoundboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F1C1611F368BC100FA9ED7 /* TYTSoundboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYTSoundboardTests.swift; sourceTree = "<group>"; };
 		E8F1C1631F368BC100FA9ED7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,6 +82,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E886BA0B1F3A7DAF004B25AB /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				E8F1C1531F368BC000FA9ED7 /* Assets.xcassets */,
+				E8F1C1581F368BC000FA9ED7 /* Info.plist */,
+				E8F1C1551F368BC000FA9ED7 /* LaunchScreen.storyboard */,
+				E8F1C1501F368BC000FA9ED7 /* Main.storyboard */,
+				E886BA0E1F3A7E3A004B25AB /* Animals R Inno~.mp3 */,
+				E886BA0C1F3A7DC6004B25AB /* TYTSoundBoardData.json */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		E886BA101F3A7EF0004B25AB /* soundModel */ = {
+			isa = PBXGroup;
+			children = (
+				E886BA111F3A7F35004B25AB /* Sound.swift */,
+			);
+			path = soundModel;
+			sourceTree = "<group>";
+		};
+		E886BA131F3A8337004B25AB /* constants */ = {
+			isa = PBXGroup;
+			children = (
+				E886BA141F3A843E004B25AB /* Constants.swift */,
+			);
+			path = constants;
+			sourceTree = "<group>";
+		};
+		E886BA161F3A9831004B25AB /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E886BA171F3A98AC004B25AB /* SoundsTableViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
 		E8F1C13E1F368BC000FA9ED7 = {
 			isa = PBXGroup;
 			children = (
@@ -96,10 +143,10 @@
 			isa = PBXGroup;
 			children = (
 				E8F1C14A1F368BC000FA9ED7 /* AppDelegate.swift */,
-				E8F1C1501F368BC000FA9ED7 /* Main.storyboard */,
-				E8F1C1531F368BC000FA9ED7 /* Assets.xcassets */,
-				E8F1C1551F368BC000FA9ED7 /* LaunchScreen.storyboard */,
-				E8F1C1581F368BC000FA9ED7 /* Info.plist */,
+				E886BA131F3A8337004B25AB /* constants */,
+				E886BA161F3A9831004B25AB /* controllers */,
+				E886BA0B1F3A7DAF004B25AB /* resources */,
+				E886BA101F3A7EF0004B25AB /* soundModel */,
 			);
 			path = TYTSoundboard;
 			sourceTree = "<group>";
@@ -231,7 +278,9 @@
 			files = (
 				E8F1C1571F368BC000FA9ED7 /* LaunchScreen.storyboard in Resources */,
 				E8F1C1541F368BC000FA9ED7 /* Assets.xcassets in Resources */,
+				E886BA0D1F3A7DC6004B25AB /* TYTSoundBoardData.json in Resources */,
 				E8F1C1521F368BC000FA9ED7 /* Main.storyboard in Resources */,
+				E886BA0F1F3A7E3A004B25AB /* Animals R Inno~.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +306,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8F1C14B1F368BC000FA9ED7 /* AppDelegate.swift in Sources */,
+				E886BA181F3A98AC004B25AB /* SoundsTableViewController.swift in Sources */,
+				E886BA121F3A7F35004B25AB /* Sound.swift in Sources */,
+				E886BA151F3A843E004B25AB /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +350,7 @@
 				E8F1C1511F368BC000FA9ED7 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		E8F1C1551F368BC000FA9ED7 /* LaunchScreen.storyboard */ = {
@@ -306,6 +359,7 @@
 				E8F1C1561F368BC000FA9ED7 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -503,6 +557,7 @@
 				E8F1C1731F368BC100FA9ED7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E8F1C1741F368BC100FA9ED7 /* Build configuration list for PBXNativeTarget "TYTSoundboardTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +566,7 @@
 				E8F1C1761F368BC100FA9ED7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E8F1C1771F368BC100FA9ED7 /* Build configuration list for PBXNativeTarget "TYTSoundboardUITests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +575,7 @@
 				E8F1C1791F368BC100FA9ED7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
