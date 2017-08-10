@@ -31,6 +31,19 @@ struct Sound {
     }
 }
 
+// MARK: - Search functionality
+extension Sound {
+    /// Whether or not this sound clip contains the search string in any of the fields
+    func shouldFilter(by search: String) -> Bool {
+        let lowercasedSearch = search.lowercased()
+
+        return name.lowercased().contains(lowercasedSearch) ||
+            (speaker?.lowercased().contains(lowercasedSearch) ?? false) ||
+            (text?.lowercased().contains(lowercasedSearch) ?? false) ||
+            (clipDescription?.lowercased().contains(lowercasedSearch) ?? false)
+    }
+}
+
 // MARK: - JSON functionality
 extension Sound {
     /// Failable initializer which takes a JSON dictionary with known keys

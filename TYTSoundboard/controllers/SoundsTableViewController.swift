@@ -11,8 +11,11 @@ import UIKit
 class SoundsTableViewController: UITableViewController {
 
     var allSounds: [Sound]?
+    var filteredSounds: [Sound]?
 
     var addButtonItem: UIBarButtonItem!
+
+    let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,11 @@ class SoundsTableViewController: UITableViewController {
 
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         self.navigationItem.rightBarButtonItem = self.addButtonItem
+
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
 
         populateModel()
     }
@@ -42,17 +50,70 @@ class SoundsTableViewController: UITableViewController {
             // 1 for the error string
             return 1
         }
+        if isSearching,
+            let filteredSounds = filteredSounds {
+            return filteredSounds.count
+        }
         return allSounds.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Internal helper func to update the text
+        func createHighlight(input string: String,
+                             search: String) -> NSAttributedString {
+            let nsstring = NSString(string: string)
+            let tmpAttributedText = NSMutableAttributedString(string: string)
+            tmpAttributedText.addAttributes([NSForegroundColorAttributeName: Const.Table.color.text],
+                                            range: NSRange(location: 0,
+                                                           length: string.characters.count))
+            var currentRange: NSRange?
+            var isDone = false
+            repeat {
+                let nextRangeToSearch: NSRange
+
+                // Define the range to search
+                if let currentRange = currentRange {
+                    let updatedLocation = currentRange.location + 1
+                    nextRangeToSearch = NSRange(location: updatedLocation,
+                                                length: nsstring.length - updatedLocation)
+                } else {
+                    nextRangeToSearch = NSRange(location: 0,
+                                                length: nsstring.length)
+                }
+
+                let resultRange = nsstring.range(of: search,
+                                                 options: .caseInsensitive,
+                                                 range: nextRangeToSearch,
+                                                 locale: nil)
+                if resultRange.location != NSNotFound {
+                    tmpAttributedText.addAttributes([NSForegroundColorAttributeName: Const.Table.color.highlighted],
+                                                    range: resultRange)
+                    currentRange = resultRange
+                } else {
+                    isDone = true
+                }
+            } while !isDone
+
+            return tmpAttributedText
+        }
+
         let cell = tableView.dequeueReusableCell(withIdentifier: Const.Table.identifier, for: indexPath)
 
         // Configure the cell...
         cell.textLabel?.text = Const.Table.noDataMsg
 
         if let allSounds = allSounds {
-            cell.textLabel?.text = allSounds[indexPath.row].name
+            if isSearching,
+                let filteredSounds = filteredSounds {
+                let highlightedText = createHighlight(input: filteredSounds[indexPath.row].name,
+                                                      search: searchController.searchBar.text!)
+                cell.textLabel?.text = nil
+                cell.textLabel?.attributedText = highlightedText
+            } else {
+                cell.textLabel?.attributedText = nil
+                cell.textLabel?.text = allSounds[indexPath.row].name
+                cell.textLabel?.textColor = Const.Table.color.text
+            }
         }
 
         return cell
@@ -60,8 +121,8 @@ class SoundsTableViewController: UITableViewController {
 
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        // We don't want to do any editing, while we're searching
+        return !isSearching
     }
 
     // Override to support editing the table view.
@@ -86,8 +147,8 @@ class SoundsTableViewController: UITableViewController {
 
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+        // We don't want to do any editing, while we're searching
+        return !isSearching
     }
 
     /*
@@ -105,7 +166,9 @@ class SoundsTableViewController: UITableViewController {
 // MARK: - Table IBActions
 extension SoundsTableViewController {
     @IBAction func refreshTriggered(sender: UIRefreshControl) {
-        populateModel()
+        if !isSearching {
+            populateModel()
+        }
 
         sender.endRefreshing()
     }
@@ -125,6 +188,28 @@ extension SoundsTableViewController {
     }
 }
 
+// MARK: - Table Search Functionality
+extension SoundsTableViewController: UISearchResultsUpdating {
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredSounds = allSounds?.filter {
+            sound in
+
+            sound.shouldFilter(by: searchText)
+        }
+
+        tableView.reloadData()
+    }
+
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+
+    var isSearching: Bool {
+        return searchController.isActive &&
+            searchController.searchBar.text != ""
+    }
+}
+
 // MARK: - Table Specific Constants
 extension Const {
     struct Table {
@@ -132,5 +217,10 @@ extension Const {
 
         static let noDataMsg = NSLocalizedString("No sound clips able to be downloaded",
                                                  comment: "Missing sound clips")
+
+        struct color {
+            static let text = UIColor.black.withAlphaComponent(0.8)
+            static let highlighted = UIColor.red
+        }
     }
 }
