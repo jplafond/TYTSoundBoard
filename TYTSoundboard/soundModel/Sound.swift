@@ -6,6 +6,7 @@
 //  Copyright © 2017 Jp LaFond. All rights reserved.
 //
 
+import AVFoundation
 import Foundation
 
 /// Sound clip to display/search/play
@@ -28,19 +29,6 @@ struct Sound {
         self.speaker = speaker
         self.text = text
         clipDescription = description
-    }
-}
-
-// MARK: - Search functionality
-extension Sound {
-    /// Whether or not this sound clip contains the search string in any of the fields
-    func shouldFilter(by search: String) -> Bool {
-        let lowercasedSearch = search.lowercased()
-
-        return name.lowercased().contains(lowercasedSearch) ||
-            (speaker?.lowercased().contains(lowercasedSearch) ?? false) ||
-            (text?.lowercased().contains(lowercasedSearch) ?? false) ||
-            (clipDescription?.lowercased().contains(lowercasedSearch) ?? false)
     }
 }
 
@@ -119,6 +107,47 @@ extension Sound {
         }
 
         return tmpArray
+    }
+}
+
+// MARK: - Search functionality
+extension Sound {
+    /// Whether or not this sound clip contains the search string in any of the fields
+    func shouldFilter(by search: String) -> Bool {
+        let lowercasedSearch = search.lowercased()
+
+        return name.lowercased().contains(lowercasedSearch) ||
+            (speaker?.lowercased().contains(lowercasedSearch) ?? false) ||
+            (text?.lowercased().contains(lowercasedSearch) ?? false) ||
+            (clipDescription?.lowercased().contains(lowercasedSearch) ?? false)
+    }
+}
+
+// MARK: - Sound Data
+extension Sound {
+    /// Data to play
+    var soundData: Data {
+        let strippedName = name.replacingOccurrences(of: ".mp3",
+                                                     with: "")
+        if let urlPath = Bundle.main.path(forResource: strippedName,
+                                          ofType: "mp3") {
+            let url = URL(fileURLWithPath: urlPath)
+            var data: Data?
+            do {
+                data = try Data(contentsOf: url)
+            } catch {
+                print("Unable to read from: <\(strippedName)>")
+                data = Const.Clip.Base.data
+            }
+
+            if let data = data {
+                return data
+            }
+        } else {
+            print("urlPath isn't present, using default")
+        }
+
+        return Const.Clip.Base.data ?? Data()
     }
 }
 

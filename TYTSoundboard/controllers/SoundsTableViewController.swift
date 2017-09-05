@@ -6,6 +6,7 @@
 //  Copyright © 2017 Jp LaFond. All rights reserved.
 //
 
+import AVFoundation
 import UIKit
 
 class SoundsTableViewController: UITableViewController {
@@ -16,6 +17,8 @@ class SoundsTableViewController: UITableViewController {
     var addButtonItem: UIBarButtonItem!
 
     let searchController = UISearchController(searchResultsController: nil)
+
+    var player: AVAudioPlayer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -151,6 +154,18 @@ class SoundsTableViewController: UITableViewController {
         return !isSearching
     }
 
+    override func tableView(_ tableView: UITableView,
+                            didSelectRowAt indexPath: IndexPath) {
+        guard let selectedSound =
+            (isSearching ? filteredSounds?[indexPath.row] :
+                allSounds?[indexPath.row]) else {
+                    print("Nothing to select")
+                    return
+        }
+        print(selectedSound)
+        play(sound: selectedSound)
+    }
+
     /*
     // MARK: - Navigation
 
@@ -207,6 +222,24 @@ extension SoundsTableViewController: UISearchResultsUpdating {
     var isSearching: Bool {
         return searchController.isActive &&
             searchController.searchBar.text != ""
+    }
+}
+
+// MARK: - Sound Playing Functionality
+extension SoundsTableViewController {
+    func play(sound: Sound) {
+        play(soundData: sound.soundData)
+    }
+
+    private func play(soundData data: Data) {
+        do {
+            // The player needs to exist after the method, so we use an instance variable in the class
+            player = try AVAudioPlayer(data: data)
+            player?.prepareToPlay()
+            player?.play()
+        } catch {
+            print("Error: <\(error)>")
+        }
     }
 }
 

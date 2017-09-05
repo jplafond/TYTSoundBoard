@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E82714E71F3CA8AE0038C50A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E82714E61F3CA8AE0038C50A /* AVFoundation.framework */; };
 		E886BA0D1F3A7DC6004B25AB /* TYTSoundBoardData.json in Resources */ = {isa = PBXBuildFile; fileRef = E886BA0C1F3A7DC6004B25AB /* TYTSoundBoardData.json */; };
 		E886BA0F1F3A7E3A004B25AB /* Animals R Inno~.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E886BA0E1F3A7E3A004B25AB /* Animals R Inno~.mp3 */; };
 		E886BA121F3A7F35004B25AB /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E886BA111F3A7F35004B25AB /* Sound.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E82714E61F3CA8AE0038C50A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E886BA0C1F3A7DC6004B25AB /* TYTSoundBoardData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TYTSoundBoardData.json; sourceTree = "<group>"; };
 		E886BA0E1F3A7E3A004B25AB /* Animals R Inno~.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Animals R Inno~.mp3"; sourceTree = "<group>"; };
 		E886BA111F3A7F35004B25AB /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E82714E71F3CA8AE0038C50A /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E82714E51F3CA8AE0038C50A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E82714E61F3CA8AE0038C50A /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E886BA0B1F3A7DAF004B25AB /* resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +137,7 @@
 				E8F1C1601F368BC100FA9ED7 /* TYTSoundboardTests */,
 				E8F1C16B1F368BC100FA9ED7 /* TYTSoundboardUITests */,
 				E8F1C1481F368BC000FA9ED7 /* Products */,
+				E82714E51F3CA8AE0038C50A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
