@@ -14,8 +14,6 @@ class SoundsTableViewController: UITableViewController {
     var allSounds: [Sound]?
     var filteredSounds: [Sound]?
 
-    var addButtonItem: UIBarButtonItem!
-
     let searchController = UISearchController(searchResultsController: nil)
 
     var player: AVAudioPlayer?
@@ -23,19 +21,18 @@ class SoundsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        addButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-                                        target: self,
-                                        action: #selector(addButtonPressed(sender:)))
-
         self.clearsSelectionOnViewWillAppear = false
 
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
-        self.navigationItem.rightBarButtonItem = self.addButtonItem
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
 
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
+
+        // Configure the auto-resizing table view cell
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
 
         populateModel()
     }
@@ -100,22 +97,24 @@ class SoundsTableViewController: UITableViewController {
             return tmpAttributedText
         }
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: Const.Table.identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Const.Table.identifier,
+                                                 for: indexPath)
 
         // Configure the cell...
-        cell.textLabel?.text = Const.Table.noDataMsg
+        if let soundCell = cell as? SoundTableViewCell {
+            soundCell.updateTitle(text: Const.Table.noDataMsg)
 
-        if let allSounds = allSounds {
-            if isSearching,
-                let filteredSounds = filteredSounds {
-                let highlightedText = createHighlight(input: filteredSounds[indexPath.row].name,
-                                                      search: searchController.searchBar.text!)
-                cell.textLabel?.text = nil
-                cell.textLabel?.attributedText = highlightedText
-            } else {
-                cell.textLabel?.attributedText = nil
-                cell.textLabel?.text = allSounds[indexPath.row].name
-                cell.textLabel?.textColor = Const.Table.color.text
+            if let allSounds = allSounds {
+                if isSearching,
+                    let filteredSounds = filteredSounds {
+                    let highlightedText = createHighlight(input: filteredSounds[indexPath.row].soundTitle,
+                                                          search: searchController.searchBar.text!)
+
+                    soundCell.updateTitle(attributedText: highlightedText)
+                } else {
+                    let sound = allSounds[indexPath.row]
+                    soundCell.updateTitle(sound: sound)
+                }
             }
         }
 
@@ -188,17 +187,8 @@ extension SoundsTableViewController {
         sender.endRefreshing()
     }
 
-    @IBAction func addButtonPressed(sender: UIBarButtonItem) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        let sound = Sound(name: "*New* Animals R Innocent")
-        let indexPath = IndexPath(row: 0, section: 0)
-        allSounds?.insert(sound, at: indexPath.row)
-        tableView.insertRows(at: [indexPath],
-                             with: .automatic)
-    }
-
     func populateModel() {
-        allSounds = Sound.allClips()
+        allSounds = Sound.allClips()?.sorted {$0.soundTitle.lowercased() < $1.soundTitle.lowercased() }
         tableView.reloadData()
     }
 }
@@ -240,6 +230,24 @@ extension SoundsTableViewController {
         } catch {
             print("Error: <\(error)>")
         }
+    }
+}
+
+// MARK: - Custom Sound Cell
+class SoundTableViewCell: UITableViewCell {
+    @IBOutlet weak var multilineTitle: UILabel!
+
+    func updateTitle(sound: Sound) {
+        updateTitle(text: sound.soundTitle)
+    }
+
+    func updateTitle(text: String, textColor: UIColor = Const.Table.color.text) {
+        multilineTitle.text = text
+        multilineTitle.textColor = textColor
+    }
+
+    func updateTitle(attributedText: NSAttributedString) {
+        multilineTitle.attributedText = attributedText
     }
 }
 

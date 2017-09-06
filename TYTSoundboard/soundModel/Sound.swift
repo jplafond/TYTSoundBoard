@@ -123,6 +123,32 @@ extension Sound {
     }
 }
 
+// MARK: - Meaningful Sound Information
+extension Sound {
+    var soundTitle: String {
+        var title = ""
+
+        func append(text: String?, seperator: String = " ") {
+            if let text = text {
+                if !title.isEmpty {
+                    title += seperator
+                }
+                title += text
+            }
+        }
+
+        append(text: clipDescription)
+        append(text: speaker)
+        append(text: text, seperator: ": ")
+
+        if title.isEmpty {
+            return name
+        }
+
+        return title
+    }
+}
+
 // MARK: - Sound Data
 extension Sound {
     /// Data to play
