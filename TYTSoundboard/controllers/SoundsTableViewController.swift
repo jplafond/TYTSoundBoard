@@ -63,7 +63,7 @@ class SoundsTableViewController: UITableViewController {
                              search: String) -> NSAttributedString {
             let nsstring = NSString(string: string)
             let tmpAttributedText = NSMutableAttributedString(string: string)
-            tmpAttributedText.addAttributes([NSForegroundColorAttributeName: Const.Table.color.text],
+            tmpAttributedText.addAttributes([NSAttributedStringKey.foregroundColor: Const.Table.color.text],
                                             range: NSRange(location: 0,
                                                            length: string.characters.count))
             var currentRange: NSRange?
@@ -86,7 +86,7 @@ class SoundsTableViewController: UITableViewController {
                                                  range: nextRangeToSearch,
                                                  locale: nil)
                 if resultRange.location != NSNotFound {
-                    tmpAttributedText.addAttributes([NSForegroundColorAttributeName: Const.Table.color.highlighted],
+                    tmpAttributedText.addAttributes([NSAttributedStringKey.foregroundColor: Const.Table.color.highlighted],
                                                     range: resultRange)
                     currentRange = resultRange
                 } else {
