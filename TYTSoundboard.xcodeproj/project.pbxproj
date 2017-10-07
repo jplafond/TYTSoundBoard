@@ -13,6 +13,7 @@
 		E886BA121F3A7F35004B25AB /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E886BA111F3A7F35004B25AB /* Sound.swift */; };
 		E886BA151F3A843E004B25AB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E886BA141F3A843E004B25AB /* Constants.swift */; };
 		E886BA181F3A98AC004B25AB /* SoundsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E886BA171F3A98AC004B25AB /* SoundsTableViewController.swift */; };
+		E8C5954A1F8814A400C65A9E /* SoundsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C595491F8814A400C65A9E /* SoundsCollectionViewController.swift */; };
 		E8F1C14B1F368BC000FA9ED7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1C14A1F368BC000FA9ED7 /* AppDelegate.swift */; };
 		E8F1C1521F368BC000FA9ED7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8F1C1501F368BC000FA9ED7 /* Main.storyboard */; };
 		E8F1C1541F368BC000FA9ED7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8F1C1531F368BC000FA9ED7 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		E886BA111F3A7F35004B25AB /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		E886BA141F3A843E004B25AB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E886BA171F3A98AC004B25AB /* SoundsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundsTableViewController.swift; sourceTree = "<group>"; };
+		E8C595491F8814A400C65A9E /* SoundsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsCollectionViewController.swift; sourceTree = "<group>"; };
 		E8F1C1471F368BC000FA9ED7 /* TYTSoundboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYTSoundboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F1C14A1F368BC000FA9ED7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8F1C1511F368BC000FA9ED7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				E886BA171F3A98AC004B25AB /* SoundsTableViewController.swift */,
+				E8C595491F8814A400C65A9E /* SoundsCollectionViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8C5954A1F8814A400C65A9E /* SoundsCollectionViewController.swift in Sources */,
 				E8F1C14B1F368BC000FA9ED7 /* AppDelegate.swift in Sources */,
 				E886BA181F3A98AC004B25AB /* SoundsTableViewController.swift in Sources */,
 				E886BA121F3A7F35004B25AB /* Sound.swift in Sources */,
@@ -433,6 +437,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -482,6 +487,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -495,7 +501,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Jp4Mobile.TYTSoundboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -508,7 +514,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Jp4Mobile.TYTSoundboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
