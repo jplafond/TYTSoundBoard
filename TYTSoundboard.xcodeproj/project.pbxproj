@@ -13,6 +13,9 @@
 		E886BA121F3A7F35004B25AB /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E886BA111F3A7F35004B25AB /* Sound.swift */; };
 		E886BA151F3A843E004B25AB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E886BA141F3A843E004B25AB /* Constants.swift */; };
 		E886BA181F3A98AC004B25AB /* SoundsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E886BA171F3A98AC004B25AB /* SoundsTableViewController.swift */; };
+		E88E3A3F2014F60200CC0450 /* StickyHeaderFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E3A3E2014F60100CC0450 /* StickyHeaderFlowLayout.swift */; };
+		E88E3A42201550CB00CC0450 /* SectionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E3A40201550CB00CC0450 /* SectionHeaderCollectionReusableView.swift */; };
+		E88E3A43201550CB00CC0450 /* SectionHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E88E3A41201550CB00CC0450 /* SectionHeaderCollectionReusableView.xib */; };
 		E8C5954A1F8814A400C65A9E /* SoundsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C595491F8814A400C65A9E /* SoundsCollectionViewController.swift */; };
 		E8F1C14B1F368BC000FA9ED7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1C14A1F368BC000FA9ED7 /* AppDelegate.swift */; };
 		E8F1C1521F368BC000FA9ED7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8F1C1501F368BC000FA9ED7 /* Main.storyboard */; };
@@ -46,6 +49,9 @@
 		E886BA111F3A7F35004B25AB /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		E886BA141F3A843E004B25AB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E886BA171F3A98AC004B25AB /* SoundsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundsTableViewController.swift; sourceTree = "<group>"; };
+		E88E3A3E2014F60100CC0450 /* StickyHeaderFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeaderFlowLayout.swift; sourceTree = "<group>"; };
+		E88E3A40201550CB00CC0450 /* SectionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		E88E3A41201550CB00CC0450 /* SectionHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		E8C595491F8814A400C65A9E /* SoundsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsCollectionViewController.swift; sourceTree = "<group>"; };
 		E8F1C1471F368BC000FA9ED7 /* TYTSoundboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYTSoundboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F1C14A1F368BC000FA9ED7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +139,16 @@
 			path = controllers;
 			sourceTree = "<group>";
 		};
+		E88E3A3D2014F5B800CC0450 /* collection */ = {
+			isa = PBXGroup;
+			children = (
+				E88E3A3E2014F60100CC0450 /* StickyHeaderFlowLayout.swift */,
+				E88E3A40201550CB00CC0450 /* SectionHeaderCollectionReusableView.swift */,
+				E88E3A41201550CB00CC0450 /* SectionHeaderCollectionReusableView.xib */,
+			);
+			path = collection;
+			sourceTree = "<group>";
+		};
 		E8F1C13E1F368BC000FA9ED7 = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				E8F1C14A1F368BC000FA9ED7 /* AppDelegate.swift */,
+				E88E3A3D2014F5B800CC0450 /* collection */,
 				E886BA131F3A8337004B25AB /* constants */,
 				E886BA161F3A9831004B25AB /* controllers */,
 				E886BA0B1F3A7DAF004B25AB /* resources */,
@@ -296,6 +313,7 @@
 			files = (
 				E8F1C1571F368BC000FA9ED7 /* LaunchScreen.storyboard in Resources */,
 				E8F1C1541F368BC000FA9ED7 /* Assets.xcassets in Resources */,
+				E88E3A43201550CB00CC0450 /* SectionHeaderCollectionReusableView.xib in Resources */,
 				E886BA0D1F3A7DC6004B25AB /* TYTSoundBoardData.json in Resources */,
 				E8F1C1521F368BC000FA9ED7 /* Main.storyboard in Resources */,
 				E886BA0F1F3A7E3A004B25AB /* Animals R Inno~.mp3 in Resources */,
@@ -323,11 +341,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E88E3A42201550CB00CC0450 /* SectionHeaderCollectionReusableView.swift in Sources */,
 				E8C5954A1F8814A400C65A9E /* SoundsCollectionViewController.swift in Sources */,
 				E8F1C14B1F368BC000FA9ED7 /* AppDelegate.swift in Sources */,
 				E886BA181F3A98AC004B25AB /* SoundsTableViewController.swift in Sources */,
 				E886BA121F3A7F35004B25AB /* Sound.swift in Sources */,
 				E886BA151F3A843E004B25AB /* Constants.swift in Sources */,
+				E88E3A3F2014F60200CC0450 /* StickyHeaderFlowLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
